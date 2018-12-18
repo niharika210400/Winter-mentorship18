@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+  <body>
+    <h1>Form Demo</h1>
+    <form action="new1.php">
+	    Name:<br>
+		<input type="text" name="Name" pattern="[a-zA-Z]*" required><br>
+		Age:<br>
+		<input type="number" name="Age" min="1" max="27" required oninvalid="setCustomValidity('Sorry, only persons up to the age of 27 can fill it.')"><br>
+		Gender:<br>
+		<input type="radio" name="Gender" value="Male"checked>Male<br>
+		<input type="radio" name="Gender" value="Female">Female<br>
+		Email id:<br>
+		<input type="email" name="Email" required><br>
+          <p>
+             <label>Nationality:</label>
+             <select id = "myList">
+               <option value = "Indian">Indian</option>
+               <option value = "American">American</option>
+               <option value = "British">British</option>
+               <option value = "Other">Other</option>
+             </select>
+          </p>
+		Skills:<br>
+		<input type="checkbox" name="skill1" value="Coding">Coding<br>
+		<input type="checkbox" name="skill2" value="Finance">Finance<br>
+		<input type="checkbox" name="skill3" value="Data analyst">Data analyst<br>
+        Contact Number:<br>
+        <input type="text" name="contact" pattern="[1-9]{1}[0-9]{9}" required><br>
+        Password:<br>
+        <input type="password" name="psw" required><br>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Cancel">		
+    </form>
+  </body>
+</html>
+
+<script>
+function validate() 
+{
+    if (!/^[a-zA-Z]*$/g.test(document.new1.Name.value)) 
+	{
+        alert("Please enter valid name.");
+        document.new1.Name.focus();
+        return false;
+    }
+    if(document.new1.Age.value<1 || document.new1.Age.value>27)
+    {
+        alert("The age must be between 1 and 27");
+        return false;
+    }
+
+    if(!/^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$/g.test(document.new1.Email.value))
+	{
+        alert("Please enter valid email. Capital letters not allowed.");
+        document.new1.email.focus();
+        return false;
+    }
+
+    if(!/^[1-9]{1}[0-9]{9}$/g.test(document.new1.contact.value))
+	{
+        alert("Please enter valid 10 digit contact number.");
+        document.new1.contact.focus();
+        return false;
+    }
+
+    if(document.new1.psw.value==document.new1.Name.value)
+	{
+        alert("Please enter valid password.");
+        document.new1.psw.focus();
+        return false;
+    }
+}
+</script>
+
