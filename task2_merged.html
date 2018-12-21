@@ -1,0 +1,218 @@
+<html lang = "en">
+<head></head>
+<body>
+<style>
+	/* The side navigation menu */
+.sidenav 
+{
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a, .dropbtn
+{
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+  .dropbtn
+{
+   background-color: #111;
+   border-color: #111;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover,.dropbtn:hover 
+{
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+
+
+.dropdown 
+{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content 
+{
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a 
+{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #111;}
+
+</style>
+	<script>
+	/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+    function openNav() 
+	{
+	document.getElementById("mySidenav").style.width = "250px";
+	document.getElementById("main").style.marginLeft = "250px";
+	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	}
+
+	/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+	function closeNav() 
+	{
+	document.getElementById("mySidenav").style.width = "0";
+	document.getElementById("main").style.marginLeft = "0";
+	document.body.style.backgroundColor = "rgb(230, 230, 255)";
+	}
+	</script>
+     <div id="mySidenav" class="sidenav">
+	 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	 <a href="#">Home</a>
+     <a href="#">About</a>
+	 <div class="dropdown">
+        <button class="dropbtn">Event</button>
+		<div class="dropdown-content">
+		<a href="#">Internal</a>
+		<a href="#">Open for all</a>
+		</div>
+	 </div>
+     <a href="#">Contact</a>
+     </div>
+
+     <!-- Use any element to open the sidenav -->
+     <span style="font-size:30px;cursor:pointer;color: rgb(255,255,255)" onclick="openNav()">&#9776; Menu
+	 <font face="Arial">
+	 </font></span>
+
+     <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+     <div id="main">	 
+	 <head>
+     <style>
+	body {background-color: rgb(230, 230, 255);}
+    h1   {color: black;}
+    p    {color: blue;}
+    </style>
+    <link rel="stylesheet" type="text/css" media="screen" href="../master.css" />
+
+  </head>
+  <body>
+    <h1 align="center">Registration Form</h1>
+	<h3> Please fill the provided form for registration. </h3>
+    <form name="final" action="new1.php" onSubmit="return validateForm();" method = "POST">
+	    <p>
+		<table>
+        <tr>
+	    <td>Name:</td>
+		<td><input type="text" name="Name" pattern="[a-zA-Z]*" required></td></tr><br>
+		<tr>
+		<td>Age:</td>
+		<td><input type="number" name="Age" min="1" max="27" required oninvalid="alert('Sorry, only persons up to the age of 27 can fill it.')"></td></tr><br>
+		<tr>
+		<td>Gender:</td>
+		<td><input type="radio" name="Gender" value="Male"checked>Male</td>
+		<td><input type="radio" name="Gender" value="Female">Female</td></tr><br>
+		<tr>
+		<td>Email id:</td>
+		<td><input type="email" name="Email" capitalize="NA" required></td></tr><br>
+        <tr>
+		<td>Nationality:</td>
+        <td><select id = "myList">
+            <option value = "Indian">Indian</option>
+            <option value = "American">American</option>
+            <option value = "British">British</option>
+            <option value = "Other">Other</option>
+	        </select></td></tr><br>
+		<tr>
+		<td>Skills:</td>
+		<td><input type="checkbox" name="skill1" value="Coding">Coding</td><br>
+		<td><input type="checkbox" name="skill2" value="Data analyst">Data analyst</td></tr><br>
+        <tr>
+		<td>Contact Number:</td>
+        <td><input type="text" name="contact" pattern="[1-9]{1}[0-9]{9}" required></td></tr><br>
+        <tr>
+		<td>Password:</td>
+        <td><input type="password" name="psw" required></td></tr><br>
+		</table>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Cancel">
+<script>
+function validate() 
+{
+    if (!/^[a-zA-Z]*$/g.test(document.final.Name.value)) 
+	{
+        alert("Please enter valid name.");
+        document.final.Name.focus();
+        return false;
+    }
+    if(document.final.Age.value<1 || document.final.Age.value>27)
+    {
+        alert("The age must be between 1 and 27");
+        return false;
+    }
+
+    if(!/^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$/g.test(document.final.Email.value))
+	{
+        alert("Please enter valid email. Capital letters not allowed.");
+        document.final.email.focus();
+        return false;
+    }
+
+    if(!/^[1-9]{1}[0-9]{9}$/g.test(document.final.contact.value))
+	{
+        alert("Please enter valid 10 digit contact number.");
+        document.final.contact.focus();
+        return false;
+    }
+
+    if(document.final.psw.value==document.final.Name.value)
+	{
+        alert("Please enter valid password.");
+        document.final.psw.focus();
+        return false;
+    }
+}
+</script>
+	    </p>
+    </form>
+    </body>
+     </div>
+  </body>
